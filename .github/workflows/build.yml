@@ -1,0 +1,14 @@
+name: build
+on: [push, workflow_dispatch]
+jobs:
+  ufbt:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: flipperdevices/flipperzero-ufbt-action@v0.1.3
+        with:
+          sdk-channel: release   # ou "dev"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: tagtinker-fap
+          path: dist/*.fap
